@@ -1,5 +1,6 @@
 import { NaturePlot, chartTypes, chartGuidance, themes, type ChartOptions, type ChartType, type DataPoint, type ChartDatum, type ThemeName } from '../src';
 import './style.css';
+import './hero.css';
 import './nature-studies.css';
 import './controls.css';
 import { enhanceSelect, syncSelect, focusSelect } from './select';
@@ -14,7 +15,6 @@ hydrateIcons();
 mountNatureStudies();
 
 const $ = <T extends HTMLElement = HTMLElement>(selector: string) => document.querySelector<T>(selector)!;
-const hero = new NaturePlot('#hero-chart', { ...options('garden'), theme: displayPalette('meadow'), animate: true, interactive: false });
 const gallery: { type: ChartType; card: HTMLElement; chart: NaturePlot; palette: ThemeName }[] = [];
 for (const [index, type] of types.entries()) {
   const metadata = chartTypes[type];
@@ -206,7 +206,6 @@ function refreshAppearance(): void {
   const button = document.querySelector<HTMLButtonElement>('[data-appearance-toggle]')!;
   button.innerHTML = icon(isDark() ? 'sun' : 'moon');
   button.setAttribute('aria-label', `Switch to ${isDark() ? 'light' : 'dark'} mode`);
-  hero.setTheme(displayPalette('meadow'));
   gallery.forEach(({ chart, palette }) => chart.setTheme(displayPalette(palette)));
   playground.setTheme(displayPalette(activeTheme));
 }
@@ -216,4 +215,3 @@ refreshAppearance();
 
 const requestedChart = new URLSearchParams(location.search).get('chart');
 if (requestedChart && types.includes(requestedChart as ChartType)) switchType(requestedChart as ChartType);
-
