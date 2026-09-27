@@ -1,0 +1,21 @@
+import { readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import ts from 'typescript';
+import { chartTypes, themes, version } from '../dist/natureplot.js';
+
+const root = new URL('../', import.meta.url);
+const pkg = JSON.parse(await readFile(new URL('package.json', root), 'utf8'));
+if (pkg.version !== version) throw new Error('Build the library before preparing Python: version mismatch.');
+const target = new URL('python/src/natureplot/', root);
+await mkdir(new URL('_assets/', target), { recursive: true });
+const bundle = await readFile(new URL('dist/natureplot.global.js', root));
+const source = ts.createSourceFile('types.ts', await readFile(new URL('src/types.ts', root), 'utf8'), ts.ScriptTarget.Latest, true);
+const options = source.statements.find(node => ts.isInterfaceDeclaration(node) && node.name.text === 'ChartOptions');
+if (!options) throw new Error('ChartOptions interface is missing.');
+const optionNames = options.members.map(member => member.name.getText(source)).filter(name => !['type', 'data', 'formatValue', 'onSelect'].includes(name));
+const catalog = { version, bundle_sha256: createHash('sha256').update(bundle).digest('hex'), charts: chartTypes, themes: Object.keys(themes), options: optionNames };
+await writeFile(new URL('_assets/natureplot.global.js', target), bundle);
+await writeFile(new URL('_assets/catalog.json', target), JSON.stringify(catalog, null, 2) + '\n');
+await writeFile(new URL('_version.py', target), `# Generated from package.json by scripts/prepare-python.mjs.\n__version__ = ${JSON.stringify(version)}\n`);
+await copyFile(new URL('LICENSE', root), new URL('python/LICENSE', root));
+console.log(`Prepared NaturePlot Python ${version}: ${Object.keys(chartTypes).length} charts, bundled runtime, and license.`);

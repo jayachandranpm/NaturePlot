@@ -1,0 +1,17 @@
+node_modules/
+dist/
+site/
+.DS_Store
+*.tgz
+
+.venv*/
+__pycache__/
+*.pyc
+*.egg-info/
+tmp/
+.env
+.env.*
+!.env.example
+.pypirc
+.npmrc
+*.log

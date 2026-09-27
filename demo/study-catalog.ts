@@ -1,0 +1,69 @@
+import type { ChartType } from '../src';
+
+export const studyAtlases: { id: string; name: string; columns: number; rows: number; types: ChartType[] }[] = [
+  { id:'original', name:'First observations', columns:3, rows:2, types:['fern','dew','growth-history','coral-range','nautilus','sundial'] },
+  { id:'botanical', name:'Botanical systems', columns:4, rows:3, types:['garden','forest','bloom','phenology','seed-ledger','phyllotaxis','leaf-veins','lotus','petal-box','pitcher','bamboo','canopy'] },
+  { id:'water-earth', name:'Water & earth', columns:4, rows:3, types:['river','mountain','tide','waterline','water-clock','tidal-rhythm','raincloud','dune','glacier','sediment','delta','estuary'] },
+  { id:'cycles-signals', name:'Cycles & signals', columns:4, rows:3, types:['rainbow','rings','season-wheel','lunar-cycle','balance','cord-ledger','star-cycle','wind-rose','firefly','migration','murmuration','daylight'] },
+  { id:'hidden-structures', name:'Hidden structures', columns:4, rows:2, types:['honeycomb','mycelium','root-tree','pebble','frost','echo','cairn','isobar'] },
+];
+
+/** A deliberate, recorded visual decision for each of the fifty encodings. */
+export const studyDetails: Record<ChartType, { observation: string; craft: string }> = {
+  rainbow:{observation:'Light separates into bands. Days find their place in the arc.',craft:'Cloud wisps frame the calendar without covering any of its 49 daily segments. Value remains a uniform intensity within each segment.'},
+  garden:{observation:'A stem gives every leaf a place to grow.',craft:'Paired secondary veins and fine roots make the plant structure more legible. Day positions, leaf size, and the intensity scale remain fixed.'},
+  forest:{observation:'Each tree has its own height and a shared piece of ground.',craft:'Eight tiers of fine needle sprays give the canopy depth. The top of each tree remains exactly on the shared linear value scale.'},
+  river:{observation:'The surface changes; the current keeps moving.',craft:'Fine current lines are clipped inside each known section of the flowing area. Missing observations still interrupt the river.'},
+  bloom:{observation:'A petal opens from a common center.',craft:'Curved longitudinal veins emphasize the petal tip. Length beyond the center carries the value; petal width and texture carry no additional measurement.'},
+  mountain:{observation:'A ridge is a sequence of peaks, slopes, and quieter ground.',craft:'Rock engraving is clipped beneath the measured ridge. Vertices and straight connections retain the supplied readings, including negative values and gaps.'},
+  tide:{observation:'A fixed shore makes a rising waterline readable.',craft:'Clipped water ripples add surface detail. The added 0%, 50%, and 100% reference ticks make the height scale explicit.'},
+  rings:{observation:'Separate rings share a center, each following its own course.',craft:'Fine arc engraving and a bark frame reference wood. Butt caps keep small progress arcs from gaining extra angular extent; every ring remains an independent goal.'},
+  'seed-ledger':{observation:'A harvest can be understood one seed at a time.',craft:'SVG shell profiles and contained seams give the count marks natural form. The colored backing token preserves exact fractional area, and denominators prevent large counts from looking like individual units.'},
+  waterline:{observation:'A clear vessel turns a level into a measurement.',craft:'Glass reflections and a double rim are clipped to the vessel. The water boundary and labeled capacity thresholds keep their exact positions.'},
+  sundial:{observation:'A fixed reference makes a changing day readable.',craft:'SVG stone flecks, concentric rims and a graded gnomon add depth without external assets. Exact clock-time arcs and lane labels support daily scheduling; the cursor does not calculate sunlight.'},
+  'season-wheel':{observation:'A year returns to its beginning, carrying its changes with it.',craft:'Quarter reference ticks make the annual dial easier to scan. The Gregorian date positions remain exact, with separate lanes for overlapping intervals.'},
+  phenology:{observation:'A bud, a leaf, a seed: change becomes visible through observation.',craft:'Native seedling paths mark observed milestones without claiming a biological growth model. Expected date windows and pending stages remain distinct. Exact dates guide onboarding follow-up.'},
+  'lunar-cycle':{observation:'A repeating phase gives a cycle a familiar rhythm.',craft:'Subtle crater outlines stay inside the illustrative moons. Data is still read from cycle angle and the outer stems, never from an inferred astronomical phase.'},
+  'water-clock':{observation:'A calibrated vessel makes remaining time tangible.',craft:'Glazing, rim details, and clipped reflections distinguish the vessel. Its constant cross-section and exact remaining-water height preserve the time scale.'},
+  balance:{observation:'Two sides meet at one pivot.',craft:'Native SVG brass surfaces, a turned support and suspended pans follow the data-driven beam. Common-scale bars and the exact difference support budget comparisons. Essential mode removes material detail.'},
+  'cord-ledger':{observation:'Twisted fibers carry a sequence of small records.',craft:'SVG paths form braided cords and overhand knots with a shared denomination. Small contributions remain countable; fractions keep their exact clipped backing area and a printed value.'},
+  'growth-history':{observation:'A record built one layer at a time.',craft:'Retained the reviewed bark and annulus engraving. Every period keeps its exact circular thickness or area, supported by aligned comparison bars.'},
+  'tidal-rhythm':{observation:'Repeating waves reveal both rhythm and variation.',craft:'Current engraving sits inside each cycle’s filled area. Irregular positions, a shared signed scale, and gaps remain intact.'},
+  'star-cycle':{observation:'A small light can locate a moment within a larger cycle.',craft:'Local radial gradients and tapered rays create a restrained star glow. Angular position locates each business checkpoint; brightness is secondary and exact priority remains in the reading.'},
+  honeycomb:{observation:'Repeated cells make room for different readings.',craft:'Inset wax rims give each hexagon depth. Cell area stays equal, while its uniform interior intensity and numeric reading encode value.'},
+  mycelium:{observation:'Fine threads join into a network of exchanges.',craft:'A narrow highlight follows each positive link inside its measured width. No extra branches or relationships are invented; zero and unknown links keep distinct dashes.'},
+  'root-tree':{observation:'Each branch has an origin that can be traced.',craft:'Bundled root fibers distinguish parent links from measured nodes. Every link follows a supplied parent, and node area represents only that node’s own value.'},
+  canopy:{observation:'Neighboring crowns divide a shared patch of light.',craft:'Clipped vein engraving gives rectangular crowns botanical detail. The treemap’s exact area allocation and explicit group labels remain the reading system.'},
+  fern:{observation:'A central stem. A rhythm of finer branches.',craft:'Retained the reviewed compound fronds and numeric amount axis. Frond tips keep a shared linear scale; cumulative share is read on its own rail.'},
+  phyllotaxis:{observation:'A seed head fits many individual parts into one whole.',craft:'Native SVG petals frame a golden-angle allocation of exactly 120 equal seed markers for positive totals. Colored anchors retain category identity; percentage labels state exact shares.'},
+  'leaf-veins':{observation:'A vein connects two positions without losing either endpoint.',craft:'SVG leaf contours and secondary veins stretch between exact paired endpoints. Direction follows the change. Hollow before and solid after markers remain readable above the leaf surface.'},
+  lotus:{observation:'A radial arrangement makes different directions visible at once.',craft:'Quiet petal washes and fine veins sit behind the radar profile. The measured polygon, target fractions, and missing-axis gaps remain separate from the botanical guides.'},
+  'petal-box':{observation:'A pod opens around its center, revealing its spread.',craft:'Native SVG pod surfaces sit between explicit Q1 and Q3 ticks, with a strong median and supplied minimum/maximum whiskers. Decorative peas do not imply a sample count.'},
+  raincloud:{observation:'Rain gathers, then falls in many fine streams.',craft:'Vertical rain engraving fills the existing histogram bins. Flat tops and exact bin widths preserve frequency density and the area-to-count relationship.'},
+  dew:{observation:'A small surface holding a surprising amount of light.',craft:'Retained the reviewed refractive fill and reflections. Radius still uses the square root of weight, with distinct hollow zero and dashed missing markers.'},
+  'wind-rose':{observation:'A flow has a direction as well as a strength.',craft:'Wind filaments are clipped to compass sectors. Removed the minimum radius: zero sectors now have no measured area and use a hollow inspection marker.'},
+  dune:{observation:'Wind leaves a fine rhythm across the slopes.',craft:'Sand-ripple engraving is clipped beneath each ridge and follows series selection. All ridges retain their common height scale and actual horizontal positions.'},
+  glacier:{observation:'A stepped landscape records a sequence of changes.',craft:'Crystalline facets stay inside each floating ice step. Signed changes, zero-height steps, connectors, and the running balance retain their exact geometry.'},
+  sediment:{observation:'One layer settles on the record of another.',craft:'Fine stratification is clipped within each series and dims with that series. Only the colored layer boundaries encode the supplied stacked contributions.'},
+  delta:{observation:'One channel divides into several destinations.',craft:'Water filaments stay inside the outgoing ribbons. Their widths still partition the supplied total; zero allocations remain accessible without painted flow.'},
+  estuary:{observation:'Separate currents meet in a shared channel.',craft:'Contained water engraving gives the ribbons a flowing surface. The same widths enter and leave each transfer, with source and destination totals preserved.'},
+  pitcher:{observation:'A narrowing chamber reveals what remains at each stage.',craft:'Ribbed chambers replace the fixed outward bulge. Stage width now stays exactly proportional to count, including true zero-width stages.'},
+  firefly:{observation:'A brief light makes one event stand out in time.',craft:'Paired Bézier wings, veins and segmented bodies create each event glyph from SVG. Event positions, track labels and exact severity take priority over the natural ornament.'},
+  migration:{observation:'A journey can be followed one stop at a time.',craft:'Native feather paths follow route direction. Numbered stops retain exact planar coordinates and area-scaled amounts. No terrain, inferred path optimization or real map is added.'},
+  murmuration:{observation:'A flock is still a collection of individuals.',craft:'SVG feathered wings identify individual readings, with larger selection targets. Values retain exact horizontal positions; vertical separation is only for readability.'},
+  'coral-range':{observation:'Fine branches spreading between two limits.',craft:'Retained the reviewed tapered branches and central polyps. Branches remain within the supplied low–high interval; a missing estimate stays explicit.'},
+  pebble:{observation:'Each small stone adds to an accumulating collection.',craft:'Layered SVG gradients and curved mineral seams give each fixed-size stone volume. Its center and cumulative step retain the exact waiting-time distribution, including tied values.'},
+  nautilus:{observation:'The familiar rhythm of a spiral, with room to grow.',craft:'Retained the reviewed shell chambers. Angle locates the explicit cycle position, each turn retains chronology, and only dot area encodes value.'},
+  frost:{observation:'A crystal repeats its structure with remarkable symmetry.',craft:'Six-armed corner crystals leave numeric readings unobstructed. The signed, symmetric correlation matrix and fixed diverging color scale remain intact.'},
+  echo:{observation:'A returning signal carries a relationship to what came before.',craft:'Concentric SVG wave paths frame each previous/current reading pair. Equal-size ripples indicate observations, not magnitude; unknown pairs remain separate from the numeric field.'},
+  cairn:{observation:'A shared landmark is built one contribution at a time.',craft:'Mineral seams are clipped inside the stones. Stone height stays proportional to contribution against one common target, including over-target totals and zero contributions.'},
+  daylight:{observation:'Opening and closing light frame the duration of a day.',craft:'A soft warm wash and small opening rays distinguish each interval. Endpoint centers and the shared 24-hour axis retain the supplied times.'},
+  isobar:{observation:'A continuous line connects places with the same reading.',craft:'Native filled contour bands use the same triangular interpolation as the lines. The invented rock texture is removed. Measured sensor nodes and labeled contour levels remain the evidence.'},
+  bamboo:{observation:'A segmented stem organizes many small leaves.',craft:'A shaded SVG culm, node joints and numbered leaves retain every integer. The visual treatment supports the stem-and-leaf structure, while the key reconstructs the original score.'},
+};
+
+export function studyLocation(type: ChartType) {
+  const atlas = studyAtlases.find(a=>a.types.includes(type))!;
+  const index = atlas.types.indexOf(type);
+  return { atlas, index, column:index%atlas.columns, row:Math.floor(index/atlas.columns) };
+}

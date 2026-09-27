@@ -1,0 +1,450 @@
+{
+  "version": "0.7.0",
+  "bundle_sha256": "7c325ac04012b034dbe9995361752b33eed1150d80b9bd3030ede782ce727cdb",
+  "charts": {
+    "rainbow": {
+      "name": "Rainbow",
+      "subtitle": "A spectrum of small wins",
+      "description": "Give seven weeks of daily activity a little color. Every arc is a week; every segment is a day.",
+      "encoding": "7 arcs × 7 days. Color intensity represents the value; pale gray means no data.",
+      "category": "Calendar"
+    },
+    "garden": {
+      "name": "Garden",
+      "subtitle": "Good habits take root",
+      "description": "Watch a month of effort grow into a garden. Three plants, thirty leaves, a story in every day.",
+      "encoding": "Each plant holds 10 consecutive dates. Leaf intensity represents value. A 31st day adds a sprout.",
+      "category": "Calendar"
+    },
+    "forest": {
+      "name": "Forest",
+      "subtitle": "See how your ideas grow",
+      "description": "Turn comparisons into a little woodland. A taller tree represents a larger value.",
+      "encoding": "Tree height represents value on a shared linear scale starting at zero.",
+      "category": "Comparison"
+    },
+    "river": {
+      "name": "River",
+      "subtitle": "Find the flow in your data",
+      "description": "Follow the gentle ebb and flow of your everyday rhythms, one observation at a time.",
+      "encoding": "Vertical position represents value. Curves pass through observations without overshoot; gaps remain gaps.",
+      "category": "Trend"
+    },
+    "bloom": {
+      "name": "Bloom",
+      "subtitle": "A fuller picture, petal by petal",
+      "description": "Give every dimension room to blossom. A simple flower reveals the shape of your strengths.",
+      "encoding": "Petal length beyond the center represents value. Petal area is decorative, not a part-to-whole measure.",
+      "category": "Comparison"
+    },
+    "mountain": {
+      "name": "Mountain",
+      "subtitle": "Make every milestone visible",
+      "description": "Explore the peaks and quieter stretches of a journey, from daily activity to weekly demand.",
+      "encoding": "Each vertex is an observation on a linear scale. Straight slopes connect adjacent values.",
+      "category": "Trend"
+    },
+    "tide": {
+      "name": "Tide",
+      "subtitle": "Little by little, the tide rises",
+      "description": "A single goal, a rising tide. Make progress feel calm, tangible, and within reach.",
+      "encoding": "Water height represents the fraction of a target. Text preserves progress beyond 100%.",
+      "category": "Progress"
+    },
+    "rings": {
+      "name": "Rings",
+      "subtitle": "Every season leaves a mark",
+      "description": "Layer your goals like the rings of a tree. Every circle has its own pace and possibility.",
+      "encoding": "Arc angle represents percent of each target. Compare angles or percentages, not raw arc lengths.",
+      "category": "Progress"
+    },
+    "seed-ledger": {
+      "name": "Seed Ledger",
+      "subtitle": "Small things, counted carefully",
+      "description": "Count everyday wins as seeds, with an explicit unit and room for fractions.",
+      "encoding": "One seed represents a labeled denomination. Filled seed area represents a fractional unit; rows preserve exact totals.",
+      "category": "Comparison"
+    },
+    "waterline": {
+      "name": "Waterline",
+      "subtitle": "Know when you reach the mark",
+      "description": "Read capacity and meaningful thresholds on a calibrated water column.",
+      "encoding": "Water height represents value on a linear zero-to-capacity scale. Dashed lines mark supplied thresholds. Fill caps at capacity; exact values remain.",
+      "category": "Progress"
+    },
+    "sundial": {
+      "name": "Sundial",
+      "subtitle": "Give your day a little sunlight",
+      "description": "Arrange daily activities on a clock-time dial, with separate tracks for overlapping plans.",
+      "encoding": "Angle represents 24-hour clock time. Arc extent represents duration. This is a schedule dial, not a physical sundial or solar calculation.",
+      "category": "Timeline"
+    },
+    "season-wheel": {
+      "name": "Season Wheel",
+      "subtitle": "A whole year, in one glance",
+      "description": "See real date intervals unfold around a Gregorian year, one season of work at a time.",
+      "encoding": "Angle represents date within the selected year; arc extent represents duration. Month lengths and leap days are respected. No astronomical solar terms are calculated.",
+      "category": "Calendar"
+    },
+    "phenology": {
+      "name": "Phenology",
+      "subtitle": "Readiness has its own rhythm",
+      "description": "Follow observed milestones alongside expected windows, leaving unknown dates open.",
+      "encoding": "Horizontal position represents date. Sprouts mark observed dates; shaded spans show expected windows; empty circles mean not observed.",
+      "category": "Timeline"
+    },
+    "lunar-cycle": {
+      "name": "Lunar Cycle",
+      "subtitle": "Make room for a recurring rhythm",
+      "description": "Arrange your own recurring routine around an abstract cycle with illustrative moons.",
+      "encoding": "Angle represents cycle position; outer stem length represents value. Moon symbols are illustrative and do not encode completion or calculate lunar phase.",
+      "category": "Cycle"
+    },
+    "water-clock": {
+      "name": "Water Clock",
+      "subtitle": "Let time take a gentler shape",
+      "description": "Read elapsed or remaining duration through a calibrated vessel of water.",
+      "encoding": "Water height represents remaining duration in a constant-area vessel. Input convention is explicitly elapsed or remaining. This chart is a snapshot, not a timer.",
+      "category": "Progress"
+    },
+    "balance": {
+      "name": "Balance",
+      "subtitle": "See both sides of the story",
+      "description": "Compare two quantities with common-scale bars and a softly tilting balance.",
+      "encoding": "Bar lengths use one linear scale. Beam tilt indicates the direction of the difference only; stones are decorative. Difference is right minus left.",
+      "category": "Comparison"
+    },
+    "cord-ledger": {
+      "name": "Cord Ledger",
+      "subtitle": "Every contribution has a place",
+      "description": "Count contributions on grouped cords, with a clear denomination for each knot.",
+      "encoding": "One knot represents a labeled denomination. Partial knot area represents a fraction. Parent tracks group contiguous cords. This is not a historical khipu decoder.",
+      "category": "Comparison"
+    },
+    "growth-history": {
+      "name": "Growth History",
+      "subtitle": "Let every chapter leave a trace",
+      "description": "Build a record of contributions as successive growth layers with a linked comparison view.",
+      "encoding": "Layer order follows input chronology. Ring thickness or area, as configured, represents period contribution; linked bars use a shared linear scale. Unknown periods have no quantitative layer.",
+      "category": "Trend"
+    },
+    "tidal-rhythm": {
+      "name": "Tidal Rhythm",
+      "subtitle": "Find what returns, and what changes",
+      "description": "Compare repeating patterns as aligned cycles with a shared scale and honest gaps.",
+      "encoding": "Horizontal position represents position within each supplied cycle. Vertical position uses a shared numeric scale across cycles. Lines connect observations; this does not predict tides.",
+      "category": "Trend"
+    },
+    "star-cycle": {
+      "name": "Star Cycle",
+      "subtitle": "A constellation of things to return to",
+      "description": "Give recurring checkpoints a place in a clearly labeled cycle.",
+      "encoding": "Angular position represents cycle position. Star intensity represents value; exact values and cycle positions remain available. The arrangement is an abstract checkpoint map.",
+      "category": "Cycle"
+    },
+    "honeycomb": {
+      "name": "Honeycomb",
+      "category": "Comparison",
+      "subtitle": "A place for every reading",
+      "description": "Compare team activity across categories in a modular hexagonal heatmap.",
+      "encoding": "Equal cells; intensity represents value. Rows are tracks; columns are labels.",
+      "rule": "Up to 6 tracks × 6 labels, one observation per pair. Nonnegative values or null; absent cells are unmeasured.",
+      "inspiration": "The modular hexagonal cells of bee and wasp nests."
+    },
+    "mycelium": {
+      "name": "Mycelium",
+      "category": "Relationship",
+      "subtitle": "Connections beneath the surface",
+      "description": "Inspect dependencies, messages, or exchanges in a directed weighted network.",
+      "encoding": "Curved links connect source to destination; line width encodes weight. Nodes are identifiers, not quantities; long dashes mean zero and short dashes mean unknown weight.",
+      "rule": "Up to 18 directed links and 10 nodes. source and destination are required, distinct, and unique as a pair. Nonnegative values or null.",
+      "inspiration": "Adaptive biological networks, including fungal and slime-mold networks; no optimization is computed."
+    },
+    "root-tree": {
+      "name": "Root Tree",
+      "category": "Relationship",
+      "subtitle": "Trace it back to the root",
+      "description": "Explore ownership, taxonomies, and parent-child dependencies.",
+      "encoding": "Depth follows parent links; node area represents its own value, never an inferred subtree total.",
+      "rule": "Up to 16 uniquely identified nodes, 4 depth levels, and at most 5 nodes per level. id is required; parent must exist; cycles are rejected. Nonnegative values or null.",
+      "inspiration": "Branching root systems and plant transport networks."
+    },
+    "canopy": {
+      "name": "Canopy",
+      "category": "Composition",
+      "subtitle": "See the whole forest",
+      "description": "Understand how departments and their projects contribute to one total.",
+      "encoding": "Nested rectangles allocate area first to tracks, then to observations within each track.",
+      "rule": "Up to 12 observations in at most 4 tracks. All quantities must be known and nonnegative. Zero-area contributions remain in the inspector.",
+      "inspiration": "A canopy partitioned into neighboring crowns; rectangular areas are a modern abstraction."
+    },
+    "fern": {
+      "name": "Fern",
+      "category": "Comparison",
+      "subtitle": "Find the few that matter",
+      "description": "Prioritize issue categories or costs using a Pareto view.",
+      "encoding": "Descending frond lengths show values; spores on a second axis show cumulative share.",
+      "rule": "Up to 8 known nonnegative quantities, sorted descending for display. Input indexes remain stable for callbacks.",
+      "inspiration": "A fern frond arranges repeated leaflets along a central stem."
+    },
+    "phyllotaxis": {
+      "name": "Phyllotaxis",
+      "category": "Composition",
+      "subtitle": "Many parts, one seed head",
+      "description": "Explain a portfolio, time allocation, or resource mix as one whole.",
+      "encoding": "120 equal dots follow a golden-angle spiral. Largest-remainder allocation approximates each category share.",
+      "rule": "Up to 8 known nonnegative parts. Dots are rounded shares, not literal counts; exact totals remain in the table. All-zero data draws no allocated dots.",
+      "inspiration": "Repeated seed placement in plant heads; this is a mathematical packing metaphor, not a claim about every species."
+    },
+    "leaf-veins": {
+      "name": "Leaf Veins",
+      "category": "Comparison",
+      "subtitle": "Follow the change",
+      "description": "Compare before and after for several teams or measures.",
+      "encoding": "Paired endpoints share one linear axis: baseline is the old reading and value is the new reading.",
+      "rule": "Up to 6 observations. Every baseline must be finite. Signed readings and null new values are supported.",
+      "inspiration": "Veins connect two sides of a leaf; here they connect paired observations."
+    },
+    "lotus": {
+      "name": "Lotus",
+      "category": "Progress",
+      "subtitle": "A profile with room to bloom",
+      "description": "Compare performance across metrics with different target scales.",
+      "encoding": "Each axis is value / target, capped at 100%; a dashed ring is the goal. Polygon shape depends on axis order.",
+      "rule": "3–8 nonnegative readings. Each positive target falls back to chart target or 100. Null readings break the polygon. Over-goal values stay exact.",
+      "inspiration": "Radial arrangement of lotus petals; unlike Bloom, each axis has its own target."
+    },
+    "petal-box": {
+      "name": "Petal Box",
+      "category": "Distribution",
+      "subtitle": "Let the spread unfold",
+      "description": "Compare variability and medians across groups using supplied quartiles.",
+      "encoding": "Whiskers span low–high; the petal body spans q1–q3; its line is the median (value).",
+      "rule": "Up to 6 known summaries satisfying low ≤ q1 ≤ value ≤ q3 ≤ high. These are supplied extrema, not automatically computed outliers.",
+      "inspiration": "A seed pod opening around its center inspires the distribution silhouette."
+    },
+    "raincloud": {
+      "name": "Raincloud",
+      "category": "Distribution",
+      "subtitle": "See where readings gather",
+      "description": "Show a histogram from supplied, possibly unequal-width bins.",
+      "encoding": "Horizontal width is the bin interval. Height is frequency / bin width, so area represents frequency.",
+      "rule": "Up to 12 ordered, non-overlapping bins with low < high and known nonnegative frequencies. Gaps between bins remain gaps.",
+      "inspiration": "Rainfall falling from a cloud; frequency bars form the visible cloud profile."
+    },
+    "dew": {
+      "name": "Dew",
+      "category": "Relationship",
+      "subtitle": "A clearer view of relationships",
+      "description": "Compare two numeric measurements and an optional third size variable.",
+      "encoding": "x is horizontal; value is vertical; optional weight controls droplet area. Hollow markers mean zero weight; dashed markers mean missing values.",
+      "rule": "Up to 40 readings with finite x. Signed values and null are supported. weight defaults to 1 and must be nonnegative. Missing readings sit in a separate rail.",
+      "inspiration": "Dew droplets provide small, distinct lenses onto individual observations."
+    },
+    "wind-rose": {
+      "name": "Wind Rose",
+      "category": "Spatial",
+      "subtitle": "Know which way it leans",
+      "description": "Compare directional observations such as wind or arrival frequencies.",
+      "encoding": "Equally spaced compass sectors use area proportional to value, with north at the top and clockwise angles.",
+      "rule": "4, 8, or 16 observations. angle must equal index × 360 / count. Nonnegative values or null. Values need not sum to 100.",
+      "inspiration": "Compass directions and observed winds; no weather predictions are generated."
+    },
+    "dune": {
+      "name": "Dune",
+      "category": "Distribution",
+      "subtitle": "Distributions across the landscape",
+      "description": "Compare supplied frequency profiles across cohorts.",
+      "encoding": "Each track has a ridge; position determines horizontal distance and height uses a common value scale.",
+      "rule": "Up to 4 tracks with 2–16 strictly increasing positions each. Nonnegative values or null; null breaks a ridge. Heights are supplied frequencies, not fitted densities.",
+      "inspiration": "Wind-shaped ridges in dune fields inspire the aligned silhouettes."
+    },
+    "glacier": {
+      "name": "Glacier",
+      "category": "Trend",
+      "subtitle": "Every change leaves a step",
+      "description": "Explain how gains and losses build a final balance.",
+      "encoding": "Floating ice steps show signed contributions; their endpoints track the running sum from zero.",
+      "rule": "Up to 10 known signed changes. Unknown changes are rejected because later cumulative totals would be unknowable.",
+      "inspiration": "A stepped glacier landscape becomes a signed waterfall; it is not a glacier mass model."
+    },
+    "sediment": {
+      "name": "Sediment",
+      "category": "Composition",
+      "subtitle": "Read the layers over time",
+      "description": "Explore how a changing total is composed of several contributions.",
+      "encoding": "Layer thickness is value at each position; stacked boundaries show the total on one linear scale.",
+      "rule": "Up to 4 tracks sharing 2–16 identical increasing positions. All values must be known and nonnegative. Linear interpolation is visual, not extra observations.",
+      "inspiration": "Deposited layers preserve sequences; chart thickness represents supplied contributions."
+    },
+    "delta": {
+      "name": "Delta",
+      "category": "Composition",
+      "subtitle": "One source, many paths",
+      "description": "Show how one budget or supply is allocated to destinations.",
+      "encoding": "One incoming ribbon splits into outgoing ribbons. Each width is proportional to its quantity.",
+      "rule": "Up to 7 known nonnegative links sharing one source and distinct destinations. Zero links remain inspectable.",
+      "inspiration": "River deltas branch a main channel into distributaries."
+    },
+    "estuary": {
+      "name": "Estuary",
+      "category": "Relationship",
+      "subtitle": "Meet where the currents join",
+      "description": "Track transfers between several origins and destinations.",
+      "encoding": "Bipartite ribbons have conserved widths; nodes show sums of their incident links.",
+      "rule": "Up to 16 known nonnegative links with at most 5 sources and 5 destinations. Directed pairs must be unique. Left and right node sets are separate.",
+      "inspiration": "River and sea exchanges inspire a modern many-to-many flow diagram."
+    },
+    "pitcher": {
+      "name": "Pitcher",
+      "category": "Progress",
+      "subtitle": "Where does the journey narrow?",
+      "description": "Locate attrition through a signup, sales, or completion funnel.",
+      "encoding": "Successive widths show remaining count relative to the first stage; labels show retention from the preceding stage.",
+      "rule": "2–7 known nonnegative counts in non-increasing order. All-zero data has no measurable conversion percentage.",
+      "inspiration": "A pitcher plant’s narrowing chamber inspires the funnel silhouette."
+    },
+    "firefly": {
+      "name": "Firefly",
+      "category": "Timeline",
+      "subtitle": "See the moments light up",
+      "description": "Spot bursts, pauses, and coincidences in event logs.",
+      "encoding": "Horizontal position is event time; tracks separate event streams; glow intensity is magnitude.",
+      "rule": "Up to 60 events in at most 5 tracks. position is required and may be irregular. Nonnegative values or null. Coincident events remain separate in the inspector.",
+      "inspiration": "Brief firefly signals inspire discrete events, not an interpolated trend."
+    },
+    "migration": {
+      "name": "Migration",
+      "category": "Spatial",
+      "subtitle": "A journey, stop by stop",
+      "description": "Show an ordered route through supplied coordinates.",
+      "encoding": "x and y locate each stop; arrows preserve input order; stop area represents value.",
+      "rule": "2–20 known nonnegative readings, each with finite x and y. Coordinates are planar in the same unit, with equal scale on both axes; not projected latitude/longitude.",
+      "inspiration": "Animal migration inspires an ordered path; the chart does not infer a real route."
+    },
+    "murmuration": {
+      "name": "Murmuration",
+      "category": "Distribution",
+      "subtitle": "Keep every individual in view",
+      "description": "Compare raw distributions across cohorts without binning away observations.",
+      "encoding": "Horizontal position represents value; vertical offsets separate nearby birds within each track and have no numeric meaning.",
+      "rule": "Up to 60 signed readings in at most 4 tracks. Null values use a separate rail. Crowded points may overlap; use the inspector for every record.",
+      "inspiration": "A flock remains many individual birds; each mark preserves one observation."
+    },
+    "coral-range": {
+      "name": "Coral Range",
+      "category": "Comparison",
+      "subtitle": "Make uncertainty visible",
+      "description": "Compare estimates with supplied lower and upper bounds.",
+      "encoding": "Branch endpoints mark low and high; the central polyp marks value on a common numeric scale.",
+      "rule": "Up to 6 observations with finite low ≤ value ≤ high. A null center is allowed within a known range. These bounds are not assumed to be confidence intervals.",
+      "inspiration": "Branching coral provides a range silhouette; bounds remain application-defined."
+    },
+    "pebble": {
+      "name": "Pebble",
+      "category": "Distribution",
+      "subtitle": "Find your place in the stream",
+      "description": "Read percentiles from a sample without choosing histogram bins.",
+      "encoding": "A right-continuous step shows the empirical cumulative distribution; ties share the fraction at or below that value.",
+      "rule": "Up to 60 known signed samples. All observations are retained, including ties. This is an empirical sample, not a fitted probability model.",
+      "inspiration": "Pebbles accumulate downstream; each reading contributes equally to cumulative probability."
+    },
+    "nautilus": {
+      "name": "Nautilus",
+      "category": "Cycle",
+      "subtitle": "Remember more than one turn",
+      "description": "Compare recurring work across several consecutive cycles.",
+      "encoding": "Angle represents position modulo cycleLength; spiral turn retains cycle number; dot area shows value.",
+      "rule": "Up to 36 nonnegative readings, strictly increasing positions from 0 to less than 4 × cycleLength. cycleLength defaults to 12.",
+      "inspiration": "Successive shell chambers inspire a spiral timeline; no biological growth law is inferred."
+    },
+    "frost": {
+      "name": "Frost",
+      "category": "Relationship",
+      "subtitle": "Patterns in a crystal lattice",
+      "description": "Inspect a supplied correlation matrix with a fixed signed scale.",
+      "encoding": "Cells show values from −1 to +1; color distinguishes sign and intensity magnitude. Diagonal cells are one.",
+      "rule": "A complete symmetric matrix of 2–6 variables using track for row and label for column. Mirrored values must agree; symmetric null pairs are allowed.",
+      "inspiration": "A repeating crystalline lattice suggests symmetry; correlation never implies causation."
+    },
+    "echo": {
+      "name": "Echo",
+      "category": "Relationship",
+      "subtitle": "Hear the previous reading",
+      "description": "Inspect lag-one dependence in an ordered numeric series.",
+      "encoding": "Each point pairs the preceding value on x with the current value on y; a diagonal marks equality.",
+      "rule": "2–40 signed observations. Nulls break pairs. The first record has no predecessor and is shown in the inspector rail. No significance or causality is inferred.",
+      "inspiration": "Returning sounds inspire comparison with what came before; this is not an echolocation model."
+    },
+    "cairn": {
+      "name": "Cairn",
+      "category": "Progress",
+      "subtitle": "Build toward one shared goal",
+      "description": "Track which contributions make up progress toward a common target.",
+      "encoding": "Stacked stone heights show contributions on a shared goal scale; the dashed line is the chart-level target, shared by every contributor.",
+      "rule": "Up to 8 known nonnegative contributions and a positive chart target (default 100). The scale expands for over-goal totals; exact excess is retained.",
+      "inspiration": "A cairn is assembled stone by stone; the stones here record contributions, not dates."
+    },
+    "daylight": {
+      "name": "Daylight",
+      "category": "Timeline",
+      "subtitle": "Watch the days open and close",
+      "description": "Compare supplied sunrise/sunset or opening/closing windows across dates.",
+      "encoding": "Each row shares a 24-hour axis; warm bands run from start to exclusive end; labels state duration.",
+      "rule": "Up to 7 unique ISO dates with increasing HH:mm start/end in one day. Only end may be 24:00. No location or astronomical calculation is performed.",
+      "inspiration": "Historical shadow observations motivated careful attention to changing daylight."
+    },
+    "isobar": {
+      "name": "Isobar",
+      "category": "Spatial",
+      "subtitle": "Connect equal readings",
+      "description": "Explore a measured scalar field such as temperature or pressure.",
+      "encoding": "Nodes retain measured values; lines interpolate equal values at 25%, 50%, and 75% of the observed range.",
+      "rule": "Complete 2–8 by 2–8 grid of unique finite x/y coordinates and known finite values. Contours use piecewise-linear triangles; they are estimates between nodes.",
+      "inspiration": "Isobars connect equal pressure; the same encoding works for other scalar fields."
+    },
+    "bamboo": {
+      "name": "Bamboo",
+      "category": "Distribution",
+      "subtitle": "The original numbers, intact",
+      "description": "Inspect a compact integer distribution without losing exact readings.",
+      "encoding": "The stem is tens; each leaf is units. A key explains how to reconstruct the number.",
+      "rule": "Up to 60 integer values from 0 to 99, with at most 18 leaves per stem. Values are sorted within stems; repeated digits are distinct observations.",
+      "inspiration": "Segmented bamboo stems inspire a modern statistical stem-and-leaf plot, not an ancient invention."
+    }
+  },
+  "themes": [
+    "meadow",
+    "ocean",
+    "autumn",
+    "twilight"
+  ],
+  "options": [
+    "title",
+    "description",
+    "theme",
+    "startDate",
+    "endDate",
+    "days",
+    "max",
+    "target",
+    "unit",
+    "xLabel",
+    "yLabel",
+    "weightLabel",
+    "unitsPerMark",
+    "thresholds",
+    "year",
+    "at",
+    "cycleLength",
+    "cycleUnit",
+    "cyclePosition",
+    "timeMode",
+    "growthMode",
+    "detail",
+    "artwork",
+    "animate",
+    "showTable",
+    "interactive"
+  ]
+}

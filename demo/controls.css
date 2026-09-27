@@ -1,0 +1,87 @@
+/* Demo controls share the same materials in both appearances. */
+:root {
+  --control-surface: #fffef9;
+  --control-hover: #f0f3e8;
+  --control-selected: #e7eddb;
+  --control-ink: #354d3b;
+  --control-muted: #6a7866;
+  --control-border: #dce4d0;
+  --control-focus: #657f50;
+  --control-shadow: 0 12px 36px #24362220, 0 2px 6px #2436220c;
+}
+[data-appearance=dark] {
+  --control-surface: #1b281f;
+  --control-hover: #26372a;
+  --control-selected: #304730;
+  --control-ink: #d9e4ce;
+  --control-muted: #a8b79d;
+  --control-border: #3a4c39;
+  --control-focus: #a5bc88;
+  --control-shadow: 0 12px 36px #0005, 0 2px 6px #0003;
+}
+.select-control { min-width: 0; width: 100%; }
+.select-control > select[hidden] { display: none; }
+.select-trigger {
+  display: flex; align-items: center; gap: 10px; width: 100%; min-height: 46px;
+  padding: 10px 12px; border: 1px solid var(--control-border); border-radius: 8px;
+  background: var(--control-surface); color: var(--control-ink); text-align: left;
+  font-size: 15px; line-height: 1.5; transition: border-color .15s, background .15s;
+}
+.select-trigger:hover { border-color: var(--control-focus); }
+.select-trigger:focus-visible, .select-trigger[aria-expanded=true] {
+  outline: 2px solid var(--control-focus); outline-offset: 2px;
+}
+.select-trigger > .ph-icon { width: 21px; height: 21px; color: var(--control-muted); flex: 0 0 21px; }
+.select-value { min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.select-chevron { display: flex; flex: 0 0 18px; color: var(--control-muted); transition: transform .18s; }
+.select-chevron .ph-icon { width: 18px; height: 18px; }
+.select-trigger[aria-expanded=true] .select-chevron { transform: rotate(180deg); }
+.select-options {
+  position: fixed; z-index: 100; margin: 0; padding: 6px; overflow: auto;
+  overscroll-behavior: contain; scrollbar-width: thin;
+  background: var(--control-surface); color: var(--control-ink);
+  border: 1px solid var(--control-border); border-radius: 10px; box-shadow: var(--control-shadow);
+}
+.select-options[hidden] { display: none; }
+.select-option {
+  display: flex; align-items: center; gap: 11px; min-height: 44px; padding: 9px 10px;
+  border-radius: 6px; cursor: pointer; font-size: 15px; line-height: 1.4;
+}
+.select-option > .ph-icon { width: 21px; height: 21px; color: var(--control-muted); flex: 0 0 21px; }
+.select-option-copy { flex: 1; min-width: 0; }
+.select-option-copy > span { display: block; overflow-wrap: anywhere; }
+.select-option-copy small { display: block; font-size: 12px; color: var(--control-muted); margin-top: 2px; }
+.select-option:hover, .select-option.is-active { background: var(--control-hover); }
+.select-option[aria-selected=true] { background: var(--control-selected); }
+.select-option.is-active { outline: 1px solid var(--control-focus); outline-offset: -1px; }
+.select-check { display: flex; visibility: hidden; flex: 0 0 17px; }
+.select-check .ph-icon { width: 17px; height: 17px; }
+.select-option[aria-selected=true] .select-check { visibility: visible; }
+.select-option[aria-disabled=true] { opacity: .45; cursor: default; }
+.study-chart-field { display: grid; gap: 7px; width: 248px; flex-shrink: 0; }
+.study-navigation label { width: auto; font-size: 13px; }
+.controls-panel .select-control + .control-label { margin-top: 20px; }
+.study-navigation .select-trigger { font-size: 15px; }
+
+/* Native details semantics, with a deliberate full-width disclosure affordance. */
+.data-editor { padding-top: 8px; margin-top: 12px; }
+.data-editor > summary, .study-reading-note > summary {
+  display: flex; align-items: center; gap: 10px; list-style: none;
+  min-height: 44px; border-radius: 6px; padding: 9px 6px;
+  color: var(--control-ink); font-size: 15px; font-weight: 500; cursor: pointer;
+}
+.data-editor > summary::-webkit-details-marker, .study-reading-note > summary::-webkit-details-marker { display: none; }
+.data-editor > summary::marker, .study-reading-note > summary::marker { content: ''; }
+.data-editor > summary:hover, .study-reading-note > summary:hover { background: var(--control-hover); }
+.data-editor > summary span { float: none; letter-spacing: normal; color: inherit; font-size: inherit; }
+.disclosure-label { flex: 1; min-width: 0; }
+.data-editor > summary .disclosure-badge {
+  font: 11px/1.5 ui-monospace, monospace; letter-spacing: .4px; padding: 2px 6px;
+  border: 1px solid var(--control-border); border-radius: 4px; color: var(--control-muted);
+}
+.disclosure-chevron { display: flex; flex: 0 0 18px; transition: transform .18s; }
+.disclosure-chevron .ph-icon { width: 18px; height: 18px; }
+:is(.data-editor, .study-reading-note)[open] > summary .disclosure-chevron { transform: rotate(180deg); }
+.data-editor textarea { margin-top: 10px; border-radius: 7px; }
+@media (max-width: 800px) { .study-chart-field { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .select-trigger, .select-chevron, .disclosure-chevron { transition: none; } }

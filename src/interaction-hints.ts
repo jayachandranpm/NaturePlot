@@ -1,0 +1,18 @@
+export const interactionHints: Record<string,string> = {
+  balance:'Choose a pan to inspect its amount. Change the sample to see the beam rebalance.',
+  'cord-ledger':'Choose a cord to isolate its knots and read the exact contribution.',
+  'star-cycle':'Choose a star to locate its checkpoint within the cycle.',
+  firefly:'Choose a firefly to reveal its event time, track, and intensity.',
+  migration:'Choose a numbered stop to follow the route and inspect its coordinates.',
+  murmuration:'Choose a bird to isolate one observation from the flock.',
+  pebble:'Choose a stone to reveal its exact value and cumulative share.',
+  echo:'Choose a ripple to compare a reading with its predecessor.',
+  isobar:'Choose a survey point to inspect the measured field. Contours interpolate between points.',
+  phenology:'Choose a sprout or an expected window to inspect the observed and planned dates.',
+  'seed-ledger':'Choose a row to inspect its total, seed denomination, and fractional remainder.',
+  phyllotaxis:'Choose a seed or a category to isolate its share of the flower.',
+  'leaf-veins':'Choose a leaf to compare its before and after values.',
+  bamboo:'Choose a numbered leaf to reconstruct the original score.',
+  'petal-box':'Choose a pod to inspect its quartiles, median, and range.',
+  sundial:'Choose an arc or an activity to inspect its start, end, and duration.',
+};

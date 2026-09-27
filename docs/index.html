@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The NaturePlot.js field guide. Explore fifty nature-inspired charts, interactive examples, and a complete JavaScript API reference.">
+  <meta name="theme-color" content="#fafbf7">
+  <title>Documentation · NaturePlot.js</title>
+  <script>try{const p=localStorage.getItem('natureplot-appearance');document.documentElement.dataset.appearance=p==='dark'||p==='light'?p:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch{}</script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%232c4839'/%3E%3Cpath d='M20 31V16M20 23Q5 22 10 11Q23 12 20 23M20 19Q20 7 31 9Q32 20 20 19' fill='none' stroke='%23dbe4bb' stroke-width='2'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip-link" href="#doc-content">Skip to documentation</a>
+  <header class="docs-header">
+    <div class="header-brand"><button class="icon-button mobile-menu" id="open-menu" aria-label="Open navigation" aria-controls="mobile-navigation"><span data-icon="list"></span></button><a class="wordmark" href="../" aria-label="NaturePlot.js home"><span data-icon="plant"></span>NaturePlot<span class="brand-js">.js</span></a><span class="header-divider"></span><a class="docs-label" href="#/introduction">Docs</a></div>
+    <button class="search-trigger" data-open-search aria-label="Search documentation"><span data-icon="magnifying-glass"></span><span class="search-trigger-label">Search documentation…</span><kbd><span data-shortcut-modifier>⌘</span> K</kbd></button>
+    <nav class="header-actions" aria-label="Site navigation"><a href="../#collection">Showcase <span data-icon="arrow-up-right"></span></a><a href="https://github.com/jayachandranpm/NaturePlot" target="_blank" rel="noopener">GitHub <span data-icon="arrow-up-right"></span></a><a href="#/changelog" class="version-link">v0.7.0</a><span class="header-divider"></span><button class="icon-button" data-appearance-toggle aria-label="Switch to dark mode"><span data-icon="moon"></span></button></nav>
+  </header>
+  <div class="docs-layout">
+    <aside class="sidebar"><nav id="desktop-navigation" aria-label="Documentation"></nav><a class="sidebar-field-note" href="#/field-notes"><span data-icon="sun"></span><span><strong>Before clocks, there was nature.</strong><span>Explore the field notes <span data-icon="arrow-right"></span></span></span></a><div class="sidebar-bottom"><span class="status-dot"></span>v0.7.0 <span>Made to grow.</span></div></aside>
+    <main id="doc-content" tabindex="-1"></main>
+    <aside class="page-outline"><div id="toc"></div><div class="outline-note"><span data-icon="leaf"></span><p>A little less ordinary.<br><em>A little more alive.</em></p><a href="../#playground">Open the playground <span data-icon="arrow-up-right"></span></a></div></aside>
+  </div>
+  <dialog id="search-dialog" aria-label="Search documentation"><div class="search-input-row"><span data-icon="magnifying-glass"></span><label class="sr-only" for="search-input">Search documentation</label><input id="search-input" type="search" placeholder="Search documentation…" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="search-results" aria-autocomplete="list"><button class="dialog-close" data-close-search aria-label="Close search"><kbd>Esc</kbd></button></div><div class="search-meta" id="search-meta" aria-live="polite">EXPLORE THE DOCUMENTATION</div><div id="search-results" role="listbox" aria-label="Search results"></div><div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> to navigate <kbd>↵</kbd> to open</span><span>Search, naturally.</span></div></dialog>
+  <dialog id="mobile-navigation" aria-label="Documentation navigation"><div class="mobile-nav-head"><strong>The field guide</strong><button class="icon-button" id="close-menu" aria-label="Close navigation"><span data-icon="x"></span></button></div><nav id="mobile-nav-content" aria-label="Mobile documentation"></nav></dialog>
+  <div class="docs-toast" id="docs-toast" role="status"></div>
+  <script type="module" src="/demo/docs/main.ts"></script>
+</body>
+</html>

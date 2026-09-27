@@ -1,0 +1,189 @@
+[
+  {
+    "file": "botanical-materials-v2.png",
+    "columns": 4,
+    "rows": 2,
+    "keys": [
+      "seed",
+      "leaf",
+      "sprout",
+      "bud",
+      "bamboo",
+      "pod",
+      "sunflower",
+      "flower"
+    ],
+    "width": 1774,
+    "height": 887,
+    "sprites": {
+      "seed": {
+        "x": 40,
+        "y": 115,
+        "width": 363,
+        "height": 205
+      },
+      "leaf": {
+        "x": 467,
+        "y": 98,
+        "width": 396,
+        "height": 239
+      },
+      "sprout": {
+        "x": 947,
+        "y": 40,
+        "width": 343,
+        "height": 379
+      },
+      "bud": {
+        "x": 1478,
+        "y": 13,
+        "width": 218,
+        "height": 416
+      },
+      "bamboo": {
+        "x": 189,
+        "y": 446,
+        "width": 66,
+        "height": 431
+      },
+      "pod": {
+        "x": 445,
+        "y": 547,
+        "width": 433,
+        "height": 192
+      },
+      "sunflower": {
+        "x": 910,
+        "y": 447,
+        "width": 408,
+        "height": 411
+      },
+      "flower": {
+        "x": 1343,
+        "y": 456,
+        "width": 416,
+        "height": 417
+      }
+    }
+  },
+  {
+    "file": "instrument-materials-v2.png",
+    "columns": 3,
+    "rows": 2,
+    "keys": [
+      "balance-stand",
+      "balance-beam",
+      "balance-pan",
+      "cord",
+      "knot",
+      "dial"
+    ],
+    "width": 1536,
+    "height": 1024,
+    "sprites": {
+      "balance-stand": {
+        "x": 119,
+        "y": 17,
+        "width": 278,
+        "height": 463
+      },
+      "balance-beam": {
+        "x": 531,
+        "y": 196,
+        "width": 480,
+        "height": 78
+      },
+      "balance-pan": {
+        "x": 1101,
+        "y": 18,
+        "width": 351,
+        "height": 455
+      },
+      "cord": {
+        "x": 221,
+        "y": 522,
+        "width": 72,
+        "height": 451
+      },
+      "knot": {
+        "x": 563,
+        "y": 621,
+        "width": 410,
+        "height": 264
+      },
+      "dial": {
+        "x": 1053,
+        "y": 525,
+        "width": 448,
+        "height": 452
+      }
+    }
+  },
+  {
+    "file": "field-materials-v2.png",
+    "columns": 4,
+    "rows": 2,
+    "keys": [
+      "star",
+      "firefly",
+      "swallow",
+      "starling",
+      "pebble",
+      "pebble-light",
+      "ripple",
+      "terrain"
+    ],
+    "width": 1774,
+    "height": 887,
+    "sprites": {
+      "star": {
+        "x": 79,
+        "y": 79,
+        "width": 300,
+        "height": 296
+      },
+      "firefly": {
+        "x": 463,
+        "y": 52,
+        "width": 407,
+        "height": 343
+      },
+      "swallow": {
+        "x": 893,
+        "y": 74,
+        "width": 432,
+        "height": 340
+      },
+      "starling": {
+        "x": 1347,
+        "y": 81,
+        "width": 406,
+        "height": 304
+      },
+      "pebble": {
+        "x": 28,
+        "y": 529,
+        "width": 404,
+        "height": 264
+      },
+      "pebble-light": {
+        "x": 464,
+        "y": 531,
+        "width": 405,
+        "height": 262
+      },
+      "ripple": {
+        "x": 920,
+        "y": 472,
+        "width": 376,
+        "height": 363
+      },
+      "terrain": {
+        "x": 1340,
+        "y": 516,
+        "width": 411,
+        "height": 295
+      }
+    }
+  }
+]
