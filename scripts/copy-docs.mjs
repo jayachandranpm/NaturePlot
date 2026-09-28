@@ -1,4 +1,4 @@
-import { mkdir, copyFile } from 'node:fs/promises';
+import { mkdir, copyFile, readdir } from 'node:fs/promises';
 await mkdir('site/docs', { recursive: true });
 await copyFile('docs/API.md', 'site/docs/API.md');
 await copyFile('LICENSE', 'site/LICENSE');
@@ -22,3 +22,8 @@ await copyFile('docs/NATIVE_SVG_REVIEW.md', 'site/docs/NATIVE_SVG_REVIEW.md');
 await copyFile('docs/PUBLISHING.md', 'site/docs/PUBLISHING.md');
 
 await copyFile('docs/DEPLOYMENT.md', 'site/docs/DEPLOYMENT.md');
+
+// Keep the source references readable by assistants that reject text/markdown.
+for (const name of await readdir('site/docs')) {
+  if (name.endsWith('.md')) await copyFile(`site/docs/${name}`, `site/docs/${name.replace(/\.md$/, '.txt')}`);
+}

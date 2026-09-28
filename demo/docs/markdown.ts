@@ -3,13 +3,17 @@ import { version } from '../../src';
 
 export const siteURL = 'https://jayachandranpm.github.io/NaturePlot/';
 export const markdownURL = (slug: string): string => new URL(`docs/${slug}.md`, siteURL).href;
+// Some assistant fetchers reject text/markdown. GitHub Pages serves .txt as text/plain.
+export const textURL = (slug: string): string => new URL(`docs/${slug}.txt`, siteURL).href;
 
 function absoluteLink(href: string): string {
   if (href.startsWith('#/')) {
-    // Hash-routed HTML pages have separate, fetchable Markdown counterparts.
-    return markdownURL(href.slice(2).split('/')[0] || 'introduction');
+    // Hash-routed HTML pages have separate, fetchable plain-text counterparts.
+    return textURL(href.slice(2).split('/')[0] || 'introduction');
   }
-  return new URL(href, `${siteURL}docs/`).href;
+  const url = new URL(href, `${siteURL}docs/`);
+  if (url.href.startsWith(siteURL) && url.pathname.endsWith('.md')) url.pathname = url.pathname.replace(/\.md$/, '.txt');
+  return url.href;
 }
 
 /** Convert the authored documentation, not the mounted chart DOM, to Markdown. */
@@ -85,15 +89,18 @@ export function pageToMarkdown(page: Page, doc: Document): string {
 export function documentationFiles(pages: Page[], doc: Document): Map<string, string> {
   const files = new Map<string, string>();
   const groups = [...new Set(pages.map(page => page.group))];
-  const summary = `# NaturePlot.js\n\n> NaturePlot.js v${version} is a dependency-free, framework-independent JavaScript library of 50 nature-inspired interactive SVG charts, with TypeScript declarations and a Python interface.\n\nInstall JavaScript with npm, pnpm, Yarn, or Bun using the package name natureplot. Install Python with pip, uv, or Poetry using natureplot. The JavaScript renderer requires a browser DOM; Python produces HTML reports and notebook output using that renderer. Charts use native SVG, not generated images. Each chart has its own input limits and measurement rules. Examples contain illustrative data.\n\nUse the linked Markdown guides for supported options, examples, accessibility, and chart selection. Do not infer quantitative meaning from decorative texture or claim that a chart is a calibrated astronomical instrument.\n\n`;
-  const index = summary + groups.map(group => `## ${group}\n\n${pages.filter(page => page.group === group).map(page => `- [${page.title.replace(/\n/g, ' ')}](${markdownURL(page.slug)}): ${page.description}`).join('\n')}`).join('\n\n') + `\n\n## Optional\n\n- [Full documentation](${siteURL}llms-full.txt): All current documentation pages in one file.\n- [API reference](${siteURL}docs/API.md): Plain Markdown API reference.\n- [Source repository](https://github.com/jayachandranpm/NaturePlot): Source code, tests, and MIT license.\n`;
+  const summary = `# NaturePlot.js\n\n> NaturePlot.js v${version} is a dependency-free, framework-independent JavaScript library of 50 nature-inspired interactive SVG charts, with TypeScript declarations and a Python interface.\n\nInstall JavaScript with npm, pnpm, Yarn, or Bun using the package name natureplot. Install Python with pip, uv, or Poetry using natureplot. The JavaScript renderer requires a browser DOM; Python produces HTML reports and notebook output using that renderer. Charts use native SVG, not generated images. Each chart has its own input limits and measurement rules. Examples contain illustrative data.\n\nUse the linked guides for supported options, examples, accessibility, and chart selection. Guides contain Markdown served as text/plain at .txt URLs for assistant compatibility; equivalent .md files remain available. If a guide cannot be fetched, use ${siteURL}llms-full.txt or documentation pasted by the user. Do not infer quantitative meaning from decorative texture or claim that a chart is a calibrated astronomical instrument.\n\n`;
+  const index = summary + groups.map(group => `## ${group}\n\n${pages.filter(page => page.group === group).map(page => `- [${page.title.replace(/\n/g, ' ')}](${textURL(page.slug)}): ${page.description}`).join('\n')}`).join('\n\n') + `\n\n## Optional\n\n- [Full documentation](${siteURL}llms-full.txt): All current documentation pages in one file.\n- [API reference](${siteURL}docs/API.txt): Plain-text API reference.\n- [Source repository](https://github.com/jayachandranpm/NaturePlot): Source code, tests, and MIT license.\n`;
   for (const page of pages) {
     if (!/^[a-z0-9-]+$/.test(page.slug)) throw new Error(`Invalid documentation slug: ${page.slug}`);
-    files.set(`docs/${page.slug}.md`, pageToMarkdown(page, doc));
+    const markdown = pageToMarkdown(page, doc);
+    files.set(`docs/${page.slug}.md`, markdown);
+    files.set(`docs/${page.slug}.txt`, markdown);
   }
   const full = summary + pages.map(page => files.get(`docs/${page.slug}.md`)).join('\n---\n\n');
   for (const path of ['llms.txt', 'llms.md', 'llm.txt', 'docs/llms.txt', 'docs/llms.md', 'docs/llm.txt']) files.set(path, index);
   for (const path of ['llms-full.txt', 'docs/llms-full.txt']) files.set(path, full);
   files.set('docs/index.md', files.get('docs/introduction.md')!);
+  files.set('docs/index.txt', files.get('docs/introduction.txt')!);
   return files;
 }

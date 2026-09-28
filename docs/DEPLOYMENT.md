@@ -15,6 +15,12 @@ The Vite build writes the home page to `site/index.html` and documentation to `s
 
 View deployment progress in the repository's **Actions** tab. The workflow can also be run manually with **Run workflow**. GitHub Pages must use **GitHub Actions** as its publishing source in **Settings → Pages**.
 
+## Assistant-readable documentation
+
+The website build exports every guide as both `docs/<page>.md` and `docs/<page>.txt`, plus `llms.txt` and `llms-full.txt`. The `.txt` files contain the same Markdown as the `.md` files. Assistant prompts, the index, and links between exported guides prefer `.txt`: GitHub Pages serves these as `text/plain`, which avoids the `text/markdown` rejection seen in some assistant browsers. Historical Markdown references copied into the site also receive `.txt` aliases. The build checks that linked text files exist.
+
+The assistant menu's **Copy prompt and guide** action includes the complete current guide, allowing use without URL fetching. After deployment, check that `docs/ai.txt` returns HTTP 200 with `Content-Type: text/plain` and the expected guide content. Keep `.md` URLs available for existing links.
+
 ## Local validation
 
 Use Node.js 24 and Python 3.10 or newer:

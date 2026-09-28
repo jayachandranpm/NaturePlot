@@ -1,6 +1,6 @@
 import { icon } from '../icons';
 import { escapeHTML, pageLabel, type Page } from './content';
-import { markdownURL, pageToMarkdown, siteURL } from './markdown';
+import { textURL, pageToMarkdown, siteURL } from './markdown';
 import openaiLogo from '../assets/providers/openai.svg?raw';
 import perplexityLogo from '../assets/providers/perplexity.svg?raw';
 import geminiLogo from '../assets/providers/gemini-color.svg?raw';
@@ -11,7 +11,7 @@ import './page-actions.css';
 const providerLogo = (svg: string) => svg.replace('<svg ', '<svg class="ai-provider-logo" aria-hidden="true" focusable="false" ');
 
 export function assistantPrompt(page: Page): string {
-  return `Help me use NaturePlot.js. Read the ${pageLabel(page)} guide at ${markdownURL(page.slug)}. Use ${siteURL}llms.txt to find related documentation. Explain how this applies to my project, use only documented APIs, and cite the relevant guides. Start with a short summary and ask what I want to build. If you cannot access the links, ask me to paste the Markdown instead of guessing.`;
+  return `Help me use NaturePlot.js. Read the ${pageLabel(page)} guide at ${textURL(page.slug)}. Use ${siteURL}llms.txt to find related guides. If a guide cannot be fetched, use ${siteURL}llms-full.txt. These URLs serve plain text. If documentation is pasted below, use it directly without requiring web access. Explain how this applies to my project, use only documented APIs, and cite the relevant guides. Start with a short summary and ask what I want to build. Only if no documentation is accessible or pasted, ask me to use "Copy prompt and guide" in NaturePlot's docs instead of guessing.`;
 }
 
 // These web-app links are convenience shortcuts, not provider API integrations.
@@ -36,13 +36,13 @@ export function pageActionsHTML(page: Page): string {
       <div class="ask-ai-panel">
         <div class="ask-ai-heading"><strong>Take this guide with you</strong><span>${escapeHTML(pageLabel(page))}</span></div>
         <div class="ask-ai-providers">${assistantLinks(page).map(provider => `<a href="${escapeHTML(provider.href)}" target="_blank" rel="noopener noreferrer" data-ai-provider="${provider.id}"><span class="ai-provider-icon">${providerLogo(provider.logo)}</span><span><strong>${provider.name}</strong><small>${provider.hint}</small></span>${icon('arrow-up-right')}</a>`).join('')}</div>
-        <p class="ask-ai-hint">Opens in a new tab. If the prompt is not filled in, copy it below.</p>
+        <p class="ask-ai-hint">Opens in a new tab. If the prompt is empty or your assistant cannot read the links, copy the prompt and guide below.</p>
         <div class="ai-prompt-fallback">
           <button type="button" class="ai-prompt-toggle" aria-expanded="false" aria-controls="ai-prompt-content"><span>Copy a prompt for any assistant</span>${icon('caret-down')}</button>
-          <div id="ai-prompt-content" class="ai-prompt-content" hidden><textarea readonly aria-label="NaturePlot assistant prompt" spellcheck="false">${escapeHTML(assistantPrompt(page))}</textarea><button type="button" class="doc-action-button" data-copy-prompt>${icon('copy')} Copy prompt</button></div>
+          <div id="ai-prompt-content" class="ai-prompt-content" hidden><p class="ai-prompt-help">Includes this guide so your assistant can read it without web access.</p><textarea readonly aria-label="NaturePlot assistant prompt and guide" spellcheck="false"></textarea><button type="button" class="doc-action-button" data-copy-prompt>${icon('copy')} Copy prompt and guide</button></div>
         </div>
         <p class="ai-action-status" role="status"></p>
-        <div class="ai-resources"><a href="./${page.slug}.md" target="_blank" rel="noopener">${icon('code')} View page as Markdown</a><a href="../llms.txt" target="_blank" rel="noopener">${icon('book-open')} llms.txt</a><a href="../llms-full.txt" target="_blank" rel="noopener">${icon('stack')} Full documentation</a></div>
+        <div class="ai-resources"><a href="./${page.slug}.txt" target="_blank" rel="noopener">${icon('code')} View guide as plain text</a><a href="../llms.txt" target="_blank" rel="noopener">${icon('book-open')} llms.txt</a><a href="../llms-full.txt" target="_blank" rel="noopener">${icon('stack')} Full documentation</a></div>
       </div>
     </details>
     <div class="page-copy-fallback" hidden><label>Copy this page as Markdown<textarea readonly spellcheck="false"></textarea></label></div>
@@ -66,6 +66,8 @@ export function mountPageActions(host: HTMLElement, page: Page, toast: (message:
   const prompt = assistantPrompt(page);
   let markdown: string | undefined;
   const pageMarkdown = () => markdown ??= pageToMarkdown(page, document);
+  const context = `${prompt}\n\nDocumentation for reference:\n\n${pageMarkdown()}`;
+  promptField.value = context;
   const copy = async (value: string): Promise<boolean> => {
     try { await navigator.clipboard.writeText(value); return true; } catch { return false; }
   };
@@ -80,12 +82,11 @@ export function mountPageActions(host: HTMLElement, page: Page, toast: (message:
     }
   });
   actions.querySelector('[data-copy-prompt]')!.addEventListener('click', async () => {
-    if (await copy(promptField.value)) status.textContent = 'Prompt copied. Paste it into your assistant.';
-    else { promptField.focus(); promptField.select(); status.textContent = 'Prompt selected. Use your browser’s copy command.'; }
+    if (await copy(promptField.value)) status.textContent = 'Prompt and guide copied. Paste them into your assistant.';
+    else { promptField.focus(); promptField.select(); status.textContent = 'Prompt and guide selected. Use your browser’s copy command.'; }
   });
   actions.querySelector('[data-ai-provider="gemini"]')!.addEventListener('click', async () => {
     // Start copying during the click; the anchor opens normally without an async popup.
-    const context = `${prompt}\n\nDocumentation for reference:\n\n${pageMarkdown()}`;
     if (await copy(context)) {
       status.textContent = 'Page context copied. Paste it into Gemini to begin.';
       toast('Context copied. Paste it into Gemini.');
