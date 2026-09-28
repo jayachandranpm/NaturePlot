@@ -4,6 +4,7 @@ import { icon, hydrateIcons } from '../icons';
 import { appearanceEvent, displayPalette, isDark, toggleAppearance } from '../appearance';
 import { pages, pageBySlug, pageLabel, parseRoute, escapeHTML, type Page } from './content';
 import { createSearchIndex, type SearchEntry } from './search';
+import { mountPageActions, pageActionsHTML } from './page-actions';
 import './style.css';
 
 const $ = <T extends HTMLElement = HTMLElement>(selector: string) => document.querySelector<T>(selector)!;
@@ -22,6 +23,7 @@ $('#mobile-nav-content').innerHTML = navigation;
 menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.close()));
 
 let currentPage: Page | undefined;
+let cleanupPageActions: (() => void) | undefined;
 let observers: IntersectionObserver[] = [];
 let instances: { chart: NaturePlot; palette: ThemeName }[] = [];
 const content = $('#doc-content');
@@ -103,10 +105,13 @@ function renderPage(): void {
   const page = pageBySlug.get(route.page);
   // A section link keeps the existing examples and their state alive.
   if (page !== currentPage || !content.childElementCount) {
+    cleanupPageActions?.();
+    cleanupPageActions = undefined;
     instances.forEach(({ chart }) => chart.destroy()); instances = [];
     observers.forEach(observer => observer.disconnect()); observers = [];
     currentPage = page;
     if (!page) {
+      document.querySelector<HTMLLinkElement>('#doc-markdown')!.removeAttribute('href');
       content.innerHTML = `<div class="page-heading"><span class="eyebrow">A PATH LESS TRAVELED</span><h1>That page hasn’t<br>taken root.</h1><p>We couldn’t find this documentation page.</p><a class="primary-link" href="#/introduction">Back to the field guide ${icon('arrow-right')}</a></div>`;
       $('#toc').replaceChildren();
       document.title = 'Page not found · NaturePlot.js';
@@ -117,6 +122,9 @@ function renderPage(): void {
       const next = pages[pageIndex + 1];
       content.innerHTML = `<div class="breadcrumb"><a href="#/introduction">Documentation</a>${icon('caret-right')}<span>${page.group}</span></div><div class="page-heading${page.slug === 'introduction' ? ' introduction-heading' : ''}"><span class="eyebrow">${page.group.toUpperCase()}</span><h1>${escapeHTML(page.title).replace('\n', '<br>')}</h1><p>${page.description}</p>${page.slug === 'introduction' ? '<div class="heading-version"><span class="status-dot"></span>THE FIELD GUIDE <span>/</span> v0.4.0</div>' : ''}</div>${page.sections.map(section => `<section class="doc-section" id="${section.id}"><h2 class="section-title"><a href="#/${page.slug}/${section.id}">${section.title}${icon('link')}</a></h2>${section.html}</section>`).join('')}<nav class="page-pagination" aria-label="Previous and next page">${previous ? `<a href="#/${previous.slug}"><span>${icon('arrow-left')} PREVIOUS</span><strong>${pageLabel(previous)}</strong></a>` : '<div></div>'}${next ? `<a href="#/${next.slug}"><span>UP NEXT ${icon('arrow-right')}</span><strong>${pageLabel(next)}</strong></a>` : '<div></div>'}</nav><footer class="doc-footer"><span>NaturePlot.js · Small by design.</span><a href="../LICENSE" target="_blank" rel="noopener">MIT License ${icon('arrow-up-right')}</a></footer>`;
       $('#toc').innerHTML = `<h2>ON THIS PAGE</h2><nav aria-label="On this page">${page.sections.map(section => `<a href="#/${page.slug}/${section.id}" data-toc="${section.id}">${section.title}</a>`).join('')}</nav>`;
+      content.querySelector('.breadcrumb')!.insertAdjacentHTML('afterend', pageActionsHTML(page));
+      cleanupPageActions = mountPageActions(content, page, toast);
+      document.querySelector<HTMLLinkElement>('#doc-markdown')!.href = `./${page.slug}.md`;
       mountExamples();
       const observer = new IntersectionObserver(entries => {
         const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
@@ -230,4 +238,3 @@ document.addEventListener('keydown', event => {
     if (searchDialog.open) searchDialog.close(); else openSearch();
   }
 });
-

@@ -35,7 +35,7 @@
     "typecheck": "tsc --noEmit && tsc -p tsconfig.demo.json",
     "test": "vitest run",
     "build:lib": "vite build --config vite.lib.config.ts && tsc --emitDeclarationOnly",
-    "build:demo": "vite build && node scripts/copy-docs.mjs",
+    "build:demo": "vite build && node scripts/copy-docs.mjs && node scripts/build-ai-docs.mjs",
     "build": "npm run typecheck && npm run build:lib && npm run build:demo",
     "preview": "vite preview --host 127.0.0.1",
     "prepublishOnly": "npm test && npm run build && npm run test:package",

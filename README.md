@@ -6,6 +6,16 @@ This repository contains the library, a working gallery/playground, and a dedica
 
 [Home & playground](https://jayachandranpm.github.io/NaturePlot/) · [Documentation](https://jayachandranpm.github.io/NaturePlot/docs/) · [Installation guide](https://jayachandranpm.github.io/NaturePlot/docs/#/installation) · [npm](https://www.npmjs.com/package/natureplot) · [PyPI](https://pypi.org/project/natureplot/)
 
+## Use NaturePlot with AI assistants
+
+Every documentation page includes **Copy page** and **Ask about NaturePlot** actions for ChatGPT, Perplexity, Gemini, Grok, and Claude. Gemini uses copy-and-paste context; other shortcuts include a page-specific prompt and documentation links.
+
+- [llms.txt](https://jayachandranpm.github.io/NaturePlot/llms.txt): project overview and links to every Markdown guide.
+- [llms-full.txt](https://jayachandranpm.github.io/NaturePlot/llms-full.txt): all current guides in one file.
+- [AI & LLMs guide](https://jayachandranpm.github.io/NaturePlot/docs/#/ai): copying, assistant links, and plain Markdown exports.
+
+`llms.md` and `llm.txt` are aliases of the index. `npm run build:demo` regenerates these files and `docs/<page>.md` from the same source as the website; use `npm run preview` to check the generated files locally.
+
 ## Natural SVG, practical decisions
 
 Version 0.7.0 keeps all **50 charts** and replaces the generated photographic pack with native SVG: curved leaves and veins, feathered birds, segmented bamboo, braided knots, shaded stones, brass pans, and data-derived contour bands. Charts and exports contain no raster images. The ESM runtime is about 60 KB gzip.
