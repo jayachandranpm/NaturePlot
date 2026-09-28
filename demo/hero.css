@@ -1,102 +1,70 @@
 .hero-phyllotaxis {
-  --seed-sage-light: #cbd7aa;
-  --seed-sage: #a6ba82;
-  --seed-moss-light: #8fa777;
-  --seed-moss: #607e59;
-  --seed-gold-light: #e2d9a0;
-  --seed-gold: #cabe7e;
-  --seed-grid: #a5b68c55;
-  --seed-vein: #f5f6df;
-  position: relative;
-  display: block;
+  container-type: inline-size;
   min-width: 0;
   width: 100%;
   overflow: hidden;
   border: 1px solid #dce3d1;
-  border-radius: 16px 100px 16px 16px;
-  background: radial-gradient(ellipse at 70% 25%, #e8eddc, transparent 65%), #f2f4eb;
-  transition: border-color 250ms ease;
+  border-radius: 16px 64px 16px 16px;
+  background: #fafbf5;
 }
 
-.hero-phyllotaxis-label {
-  position: absolute;
-  top: 28px;
-  left: 30px;
-  color: #77866b;
+.hero-phyllotaxis-heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding: 27px 30px 0;
+}
+
+.hero-phyllotaxis-label,
+.hero-phyllotaxis-live {
+  color: #647554;
   font-size: 12px;
-  letter-spacing: 1.6px;
+  letter-spacing: 1.3px;
   line-height: 1.5;
 }
 
-.hero-phyllotaxis-art {
-  display: block;
-  width: 100%;
-  height: auto;
-  padding: 25px 20px 5px;
-}
-
-.hero-phyllotaxis-seeds {
-  transform-origin: 260px 205px;
-  transition: transform 800ms cubic-bezier(.22,.68,0,1);
-}
+.hero-phyllotaxis-live { display: inline-flex; align-items: center; gap: 8px; }
+.hero-phyllotaxis-example { padding: 14px 30px 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.hero-phyllotaxis-chart { margin-top: 12px; min-width: 0; }
+.hero-phyllotaxis-chart .np-chart > svg { min-width: 560px; }
+#hero-phyllotaxis-chart .np-inspector { padding: 15px 24px 20px; }
+#hero-phyllotaxis-chart .np-observation-card { min-height: 0; }
+.hero-phyllotaxis-scroll { display: none; padding: 12px 24px 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
 
 .hero-phyllotaxis-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 16px;
-  padding: 0 30px 25px;
+  padding: 22px 30px 25px;
+  border-top: 1px solid var(--line);
 }
 
 .hero-phyllotaxis-caption { display: grid; gap: 5px; }
-
 .hero-phyllotaxis-category { color: var(--muted); font-size: 12px; letter-spacing: .5px; }
+.hero-phyllotaxis-name { margin: 0; color: #526c42; font: italic 30px/1.2 var(--serif); }
+.hero-phyllotaxis-link { display: inline-flex; align-items: center; gap: 10px; color: #647554; font-size: 14px; }
+.hero-phyllotaxis-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 
-.hero-phyllotaxis-name {
-  color: #526c42;
-  font: italic 30px/1.2 var(--serif);
-}
-
-.hero-phyllotaxis-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: #647554;
-  font-size: 14px;
-}
-
-.hero-phyllotaxis:hover, .hero-phyllotaxis:focus-visible { border-color: #8a9e6c; }
-.hero-phyllotaxis:hover .hero-phyllotaxis-seeds, .hero-phyllotaxis:focus-visible .hero-phyllotaxis-seeds { transform: rotate(7deg); }
-
-[data-appearance=dark] .hero-phyllotaxis {
-  --seed-sage-light: #c2d49e;
-  --seed-sage: #91ad71;
-  --seed-moss-light: #8aa479;
-  --seed-moss: #58724e;
-  --seed-gold-light: #e2d49c;
-  --seed-gold: #b9ac72;
-  --seed-grid: #9ab17b30;
-  border-color: #34452e;
-  background: radial-gradient(ellipse at 70% 25%, #273622, transparent 65%), #19261c;
-}
-
-[data-appearance=dark] .hero-phyllotaxis-label { color: #a3b58d; }
+[data-appearance=dark] .hero-phyllotaxis { border-color: #34452e; background: #17221b; }
+[data-appearance=dark] .hero-phyllotaxis-label,
+[data-appearance=dark] .hero-phyllotaxis-live { color: #a3b58d; }
 [data-appearance=dark] .hero-phyllotaxis-name { color: #c6d5ab; }
 [data-appearance=dark] .hero-phyllotaxis-link { color: #b0c39a; }
 
+@container (max-width: 559px) {
+  .hero-phyllotaxis-scroll { display: block; padding-bottom: 12px; }
+}
+
 @media (max-width: 780px) {
-  .hero-phyllotaxis { max-width: 550px; margin: 0 auto; }
+  .hero-phyllotaxis { max-width: 640px; margin: 0 auto; }
 }
 
-@media (max-width: 520px) {
-  .hero-phyllotaxis { border-top-right-radius: 76px; }
-  .hero-phyllotaxis-label { top: 22px; left: 24px; }
-  .hero-phyllotaxis-art { padding: 30px 10px 0; }
-  .hero-phyllotaxis-footer { padding: 0 24px 22px; }
+@media (max-width: 610px) {
+  .hero-phyllotaxis-heading { padding: 22px 24px 0; }
+  .hero-phyllotaxis-example { padding-left: 24px; padding-right: 24px; }
+  .hero-phyllotaxis-footer { padding: 20px 24px 22px; }
   .hero-phyllotaxis-name { font-size: 28px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-phyllotaxis, .hero-phyllotaxis-seeds { transition: none; }
-  .hero-phyllotaxis:hover .hero-phyllotaxis-seeds, .hero-phyllotaxis:focus-visible .hero-phyllotaxis-seeds { transform: none; }
 }
