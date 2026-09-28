@@ -94,9 +94,27 @@ describe('assistant links and page actions', () => {
     const writeText=vi.fn().mockRejectedValue(new Error('denied')); clipboard(writeText); mount();
     const link = document.querySelector<HTMLAnchorElement>('[data-ai-provider="gemini"]')!;
     link.addEventListener('click', event => event.preventDefault()); link.click();
-    await vi.waitFor(() => expect(document.querySelector<HTMLDetailsElement>('.ai-prompt-fallback')!.open).toBe(true));
+    await vi.waitFor(() => expect(document.querySelector<HTMLElement>('.ai-prompt-content')!.hidden).toBe(false));
+    expect(document.querySelector('.ai-prompt-toggle')!.getAttribute('aria-expanded')).toBe('true');
     expect(writeText.mock.calls[0][0]).toContain(pageToMarkdown(page, document));
     expect(document.querySelector<HTMLTextAreaElement>('.ai-prompt-fallback textarea')!.value).toContain(pageToMarkdown(page, document));
+  });
+
+  it('discloses a copyable prompt and keeps its accessible state in sync', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined); clipboard(writeText); mount();
+    const toggle = document.querySelector<HTMLButtonElement>('.ai-prompt-toggle')!;
+    const content = document.getElementById(toggle.getAttribute('aria-controls')!)!;
+    expect(content.hidden).toBe(true);
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    toggle.click();
+    expect(content.hidden).toBe(false);
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    content.querySelector<HTMLButtonElement>('[data-copy-prompt]')!.click();
+    await vi.waitFor(() => expect(document.querySelector('.ai-action-status')!.textContent).toContain('Prompt copied'));
+    expect(writeText).toHaveBeenCalledWith(assistantPrompt(page));
+    toggle.click();
+    expect(content.hidden).toBe(true);
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
   });
 
   it('closes on Escape and outside activation, returning keyboard focus', () => {
