@@ -1,6 +1,7 @@
 import { NaturePlot, chartTypes, chartGuidance, themes, type ChartOptions, type ChartType, type DataPoint, type ChartDatum, type ThemeName } from '../src';
 import './style.css';
 import './hero.css';
+import { mountPhyllotaxisHero } from './hero';
 import './nature-studies.css';
 import './controls.css';
 import { enhanceSelect, syncSelect, focusSelect } from './select';
@@ -12,6 +13,7 @@ import { appearanceEvent, displayPalette, isDark, toggleAppearance } from './app
 import { mountNatureStudies } from './nature-studies';
 
 hydrateIcons();
+mountPhyllotaxisHero();
 mountNatureStudies();
 
 const $ = <T extends HTMLElement = HTMLElement>(selector: string) => document.querySelector<T>(selector)!;

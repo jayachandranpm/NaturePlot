@@ -1,14 +1,12 @@
-.hero-bloom {
-  --bloom-sage-light: #cbd7aa;
-  --bloom-sage: #a6ba82;
-  --bloom-moss-light: #8fa777;
-  --bloom-moss: #607e59;
-  --bloom-gold-light: #e2d9a0;
-  --bloom-gold: #cabe7e;
-  --bloom-center: #d9cc8c;
-  --bloom-seed: #657148;
-  --bloom-grid: #a5b68c55;
-  --bloom-vein: #f5f6df;
+.hero-phyllotaxis {
+  --seed-sage-light: #cbd7aa;
+  --seed-sage: #a6ba82;
+  --seed-moss-light: #8fa777;
+  --seed-moss: #607e59;
+  --seed-gold-light: #e2d9a0;
+  --seed-gold: #cabe7e;
+  --seed-grid: #a5b68c55;
+  --seed-vein: #f5f6df;
   position: relative;
   display: block;
   min-width: 0;
@@ -20,7 +18,7 @@
   transition: border-color 250ms ease;
 }
 
-.hero-bloom-label {
+.hero-phyllotaxis-label {
   position: absolute;
   top: 28px;
   left: 30px;
@@ -30,19 +28,19 @@
   line-height: 1.5;
 }
 
-.hero-bloom-art {
+.hero-phyllotaxis-art {
   display: block;
   width: 100%;
   height: auto;
   padding: 25px 20px 5px;
 }
 
-.hero-bloom-flower {
+.hero-phyllotaxis-seeds {
   transform-origin: 260px 205px;
   transition: transform 800ms cubic-bezier(.22,.68,0,1);
 }
 
-.hero-bloom-footer {
+.hero-phyllotaxis-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,12 +48,16 @@
   padding: 0 30px 25px;
 }
 
-.hero-bloom-name {
+.hero-phyllotaxis-caption { display: grid; gap: 5px; }
+
+.hero-phyllotaxis-category { color: var(--muted); font-size: 12px; letter-spacing: .5px; }
+
+.hero-phyllotaxis-name {
   color: #526c42;
   font: italic 30px/1.2 var(--serif);
 }
 
-.hero-bloom-link {
+.hero-phyllotaxis-link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -63,39 +65,38 @@
   font-size: 14px;
 }
 
-.hero-bloom:hover, .hero-bloom:focus-visible { border-color: #8a9e6c; }
-.hero-bloom:hover .hero-bloom-flower, .hero-bloom:focus-visible .hero-bloom-flower { transform: rotate(7deg); }
+.hero-phyllotaxis:hover, .hero-phyllotaxis:focus-visible { border-color: #8a9e6c; }
+.hero-phyllotaxis:hover .hero-phyllotaxis-seeds, .hero-phyllotaxis:focus-visible .hero-phyllotaxis-seeds { transform: rotate(7deg); }
 
-[data-appearance=dark] .hero-bloom {
-  --bloom-sage-light: #c2d49e;
-  --bloom-sage: #91ad71;
-  --bloom-moss-light: #8aa479;
-  --bloom-moss: #58724e;
-  --bloom-gold-light: #e2d49c;
-  --bloom-gold: #b9ac72;
-  --bloom-center: #cfbf7d;
-  --bloom-grid: #9ab17b30;
+[data-appearance=dark] .hero-phyllotaxis {
+  --seed-sage-light: #c2d49e;
+  --seed-sage: #91ad71;
+  --seed-moss-light: #8aa479;
+  --seed-moss: #58724e;
+  --seed-gold-light: #e2d49c;
+  --seed-gold: #b9ac72;
+  --seed-grid: #9ab17b30;
   border-color: #34452e;
   background: radial-gradient(ellipse at 70% 25%, #273622, transparent 65%), #19261c;
 }
 
-[data-appearance=dark] .hero-bloom-label { color: #a3b58d; }
-[data-appearance=dark] .hero-bloom-name { color: #c6d5ab; }
-[data-appearance=dark] .hero-bloom-link { color: #b0c39a; }
+[data-appearance=dark] .hero-phyllotaxis-label { color: #a3b58d; }
+[data-appearance=dark] .hero-phyllotaxis-name { color: #c6d5ab; }
+[data-appearance=dark] .hero-phyllotaxis-link { color: #b0c39a; }
 
 @media (max-width: 780px) {
-  .hero-bloom { max-width: 550px; margin: 0 auto; }
+  .hero-phyllotaxis { max-width: 550px; margin: 0 auto; }
 }
 
 @media (max-width: 520px) {
-  .hero-bloom { border-top-right-radius: 76px; }
-  .hero-bloom-label { top: 22px; left: 24px; }
-  .hero-bloom-art { padding: 30px 10px 0; }
-  .hero-bloom-footer { padding: 0 24px 22px; }
-  .hero-bloom-name { font-size: 28px; }
+  .hero-phyllotaxis { border-top-right-radius: 76px; }
+  .hero-phyllotaxis-label { top: 22px; left: 24px; }
+  .hero-phyllotaxis-art { padding: 30px 10px 0; }
+  .hero-phyllotaxis-footer { padding: 0 24px 22px; }
+  .hero-phyllotaxis-name { font-size: 28px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-bloom, .hero-bloom-flower { transition: none; }
-  .hero-bloom:hover .hero-bloom-flower, .hero-bloom:focus-visible .hero-bloom-flower { transform: none; }
+  .hero-phyllotaxis, .hero-phyllotaxis-seeds { transition: none; }
+  .hero-phyllotaxis:hover .hero-phyllotaxis-seeds, .hero-phyllotaxis:focus-visible .hero-phyllotaxis-seeds { transform: none; }
 }
